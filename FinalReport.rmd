@@ -33,6 +33,11 @@ A new  preventative vaccine (covid91) is under test in clinical trials. Given th
 # Males
 
 
+$H_0$ Males who take Vaccine will show its effective against contracting COVID-19
+
+$H_A$ Males taking the Vaccine will show no difference in contracting COVID -19
+
+
 ### Barplot
 
 
@@ -93,6 +98,14 @@ options(digits=2)
 
 # GALS
 
+$H_0$ GALS who take Vaccine will show its effective against contracting COVID-19
+
+$H_A$ GALS taking the Vaccine will show no difference in contracting COVID -19
+
+
+
+
+
 ```{r}
 TheData <- gal %>% group_by(infected,treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
 # the group_by followed by summarize(count=n())
@@ -147,6 +160,11 @@ options(digits=2)
 
 # Drug Users
 
+$H_0$ DrugUsers who take Vaccine will show its effective against contracting COVID-19
+
+$H_A$ DrugUsers taking the Vaccine will show no difference in contracting COVID -19
+
+
 
 ```{r}
 TheData <- DrugUser %>% group_by(infected,treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
@@ -197,8 +215,68 @@ options(digits=2)
 
 ## Effectiveness Confidence Interval `r low`  to `r hi`
 
+
+
+
 # LGBTQ
 
+$H_0$ LGBTQ (Males) who take Vaccine will show its effective against contracting COVID-19
+
+$H_A$ LGBTQ (Males) taking the Vaccine will show no difference in contracting COVID -19
+
+### Barplot
+
+
+
+```{r}
+TheData <-gay %>% group_by(infected,treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+# the group_by followed by summarize(count=n())
+basicC <- ggplot(TheData,aes(x=infected,y=count,fill=treatment))
+basicC + geom_bar(stat="identity",position="dodge")
+#Now for percentage plot
+basicCC <- ggplot(TheData,aes(x=infected,y=prcnt*100,fill=treatment)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
+```
+
+
+
+### Numerical results
+
+```{r}
+table1 <- xtabs(~infected + treatment, data=gay)
+rowPerc(table1)
+colPerc(table1)
+```
+
+
+
+### Inferential 
+
+
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+gayfish <- fisher.test(table1)
+gayfish
+```
+
+```{r}
+effect <- gayfish$p.value/(gayfish$p.value +1)
+effectivenessgay = gayfish$estimate/(gayfish$estimate +1)*100
+print(effectivenessgay)
+```
+
+## Effectiveness for GAY is `r round(effectivenessgay,0)`
+
+
+```{r}
+low=(gayfish$conf.int[1]/(gayfish$conf.int[1] +1))*100
+hi=(gayfish$conf.int[2]/(gayfish$conf.int[2] +1))*100
+options(digits=2)
+```
+
+## Effectiveness Confidence Interval `r low`  to `r hi`
 
 
 

@@ -54,6 +54,10 @@ basicCC <- ggplot(TheData,aes(x=infected,y=prcnt*100,fill=treatment))
 basicCC + geom_bar(stat="identity", position = "dodge")
 ```
 
+This plot represents  guy(males) who took the vaccine in blue  and the placebo vaccine in red we are trying to determine if eitheir taking the vaccine is effective in preventing COVID -19 or do you contract it. About 58% of the males who took the vaccine did get COVID -19 unlike those getting the placebo effect only about 42% ended up contracting COVID -19.The vaccine appears to be ineffective in protection against covid-19.
+
+
+
 
 ### Numerical results
 
@@ -62,6 +66,10 @@ table1 <- xtabs(~infected + treatment, data=guy)
 rowPerc(table1)
 colPerc(table1)
 ```
+
+
+The numerical results show specific percentages of guys(men) that got COVID -19 after taking the placebo and taking the vaccine. Among the guys, 58% got COVID-19 after taking the vaccine, while the approximately 42% of guys that were given the placebo contracted covid-19.Showing a 16 percent difference .The vaccine is clearly not effective in this group of people .
+
 
 
 ### Inferential 
@@ -74,6 +82,9 @@ chisqtestGC(table1)
 guyfish <- fisher.test(table1)
 guyfish
 ```
+
+
+The results of the fisher exact test shows  the odd ratio being 0.68 while the p vaule is 6e-04 a small number that the results are highly unlikely to occurr.
 
 
 ```{r}
@@ -92,6 +103,11 @@ options(digits=2)
 ```
 
 ## Effectiveness Confidence Interval `r low`  to `r hi`
+
+Above is the effectiveness for the COIVD-19 vaccine for guys(males) which is 40.4. If the effectiveness is above 50% that means that the vaccine is effective however based on the 40.4 the vaccine is not effective in this gorup. The odds ratio is approximately how effective the vaccine is  40.Based on the interval 35.09 - 45.93, we can conclude that the vaccine is ineffective in protecting guys from getting covid-19 and the placebo is more effective in this group.
+
+
+
 
 
 

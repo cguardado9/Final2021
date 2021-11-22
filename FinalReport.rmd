@@ -1,6 +1,6 @@
 ---
 title: "Covid19 vaccine study Fall2021"
-author: "Put your name here!"
+author: "Caina Guardado!"
 date: "`r Sys.Date()`"
 output: 
   html_document:
@@ -189,6 +189,8 @@ Above is the effectiveness for the COIVD-19 vaccine for gals(females) which is 6
 
 
 
+
+
 # Drug Users
 
 $H_0$ DrugUsers who take Vaccine will show its effective against contracting COVID-19
@@ -208,6 +210,14 @@ basicCC + geom_bar(stat="identity", position = "dodge")
 ```
 
 
+
+This plot represents  DrugUsers who took the vaccine in blue and the placebo vaccine in red we are trying to determine if either taking the vaccine is effective in preventing COVID -19 or  contract it. About 33 of the Drugusers who took the vaccine did get COVID -19 unlike those getting the placebo effect only about 67% ended up contracting COVID -19.The vaccine appears to be effective in protection against covid-19.
+
+
+
+
+
+
 ### Numerical results
 
 ```{r}
@@ -215,6 +225,11 @@ table1 <- xtabs(~infected + treatment, data=DrugUser)
 rowPerc(table1)
 colPerc(table1)
 ```
+
+
+
+The numerical results show specific percentages of DrugUsers that got COVID -19 after taking the placebo and taking the vaccine. Among the DrugUsers, 33% got COVID-19 after taking the vaccine, while the approximately 67% of DrugUsers that were given the placebo contracted covid-19.Showing a 34 percent difference .The vaccine is clearly is effective in this group of people ,Showing a ratio of 2:1. (placebo ,drug).
+
 
 ### Inferential 
 
@@ -226,6 +241,11 @@ chisqtestGC(table1)
 DrugUserfish <- fisher.test(table1)
 DrugUserfish
 ```
+
+
+The results of the fisher exact test shows  the odd ratio being 1.8 while the p vaule 0.002 less than one a small number that the results are highly unlikely to occur.
+
+
 
 
 
@@ -245,6 +265,10 @@ options(digits=2)
 ```
 
 ## Effectiveness Confidence Interval `r low`  to `r hi`
+
+
+
+Above is the effectiveness for the COIVD-19 vaccine for DrugUsers which is 64.7. If the effectiveness is above 50% that means that the vaccine is effective based on the 64.7 the vaccine is effective in this group. The odds ratio is  approximately how effective the vaccine is 65.Based on the interval 54.96 - 73.63, we can conclude that the vaccine is effective in protecting DrugUser from getting covid-19 and the placebo is more ineffective in protecting this group similar to Gals .
 
 
 

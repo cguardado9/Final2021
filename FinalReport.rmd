@@ -119,7 +119,7 @@ $H_0$ GALS who take Vaccine will show its effective against contracting COVID-19
 $H_A$ GALS taking the Vaccine will show no difference in contracting COVID -19
 
 
-
+### Barplot
 
 
 ```{r}
@@ -197,7 +197,7 @@ $H_0$ DrugUsers who take Vaccine will show its effective against contracting COV
 
 $H_A$ DrugUsers taking the Vaccine will show no difference in contracting COVID -19
 
-
+### Barplot
 
 ```{r}
 TheData <- DrugUser %>% group_by(infected,treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
@@ -355,7 +355,6 @@ Above is the effectiveness for the COIVD-19 vaccine for gays which is 28.6. If t
 
 
 
-
-
 # Conclusions and recommendations
+In conclusion the data for  Gals and DrugUser group of people show that the vaccine is effective unlike for Guys and LGBTQ(gays) the vaccine does not protect meaning the placebo has lower number of COVID 19.I recommend that LGBTQ(gays) should not get the vaccine because they are at the highest risk unlike any other groups the vaccine effectiveness is less than 30 percent while for males its 40 percent.Gals and Druguser effectiveness is above 60 percent showing good odds .
 

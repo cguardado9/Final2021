@@ -84,7 +84,7 @@ guyfish
 ```
 
 
-The results of the fisher exact test shows  the odd ratio being 0.68 while the p vaule is 6e-04 a small number that the results are highly unlikely to occurr.
+The results of the fisher exact test shows  the odd ratio being 0.68 while the p vaule is 6e-04 a small number that the results are highly unlikely to occur.
 
 
 ```{r}
@@ -133,6 +133,10 @@ basicCC + geom_bar(stat="identity", position = "dodge")
 ```
 
 
+This plot represents  gals(females) who took the vaccine in blue  and the placebo vaccine in red we are trying to determine if either taking the vaccine is effective in preventing COVID -19 or  contracting it. About 33% of the gals who took the vaccine did get COVID -19 unlike those getting the placebo 67% did ended up contracting COVID -19 a substantially higher number.The vaccine appears to be effective in protection against covid-19 in gals unlike for guy(males).
+
+
+
 
 ### Numerical results
 
@@ -141,6 +145,12 @@ table1 <- xtabs(~infected + treatment, data=gal)
 rowPerc(table1)
 colPerc(table1)
 ```
+
+
+The numerical results show specific percentages of gals(females) that got COVID -19 after taking the placebo and taking the vaccine. Among the gals, 33% got COVID-19 after taking the vaccine, while the approximately 67% of gals that were given the placebo contracted covid-19.Showing a 34 percent difference .The vaccine is clearly is effective in this group of people ,Showing a ratio of 2:1. (placebo ,drug).
+
+
+
 
 ### Inferential 
 
@@ -152,6 +162,9 @@ chisqtestGC(table1)
 galfish <- fisher.test(table1)
 galfish
 ```
+
+The results of the fisher exact test shows  the odd ratio being 2 while the p vaule is is less than 2e-16  a small number that the results are highly unlikely to occur.
+
 
 
 ```{r}
@@ -171,6 +184,8 @@ options(digits=2)
 
 ## Effectiveness Confidence Interval `r low`  to `r hi`
 
+
+Above is the effectiveness for the COIVD-19 vaccine for gals(females) which is 67.7. If the effectiveness is above 50% that means that the vaccine is effective based on the 67.7 the vaccine is effective in this group. The odds ratio is approximately how effective the vaccine is  67.Based on the interval 63.14 - 70.99, we can conclude that the vaccine is effective in protecting gals from getting covid-19 and the placebo is more ineffective in protecting this group.
 
 
 
